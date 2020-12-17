@@ -1,0 +1,10 @@
+all:
+  hosts:
+    server01:
+      ansible_host: 192.168.1.1
+      ansible_user: automata
+      ansible_sudo_password: "{{ sudo-password-1 }}"
+    server02:
+      ansible_host: 192.168.1.2
+      ansible_user: automata
+      ansible_sudo_password: "{{ sudo-password-2 }}"  
