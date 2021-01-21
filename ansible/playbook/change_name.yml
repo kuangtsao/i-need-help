@@ -1,0 +1,44 @@
+- name: change filename
+  hosts: localhost
+  vars:
+    apk_upload_path: "./apk"
+    apk_name_prefix: "sui"
+  tasks:
+    - name: get today's date in jenkins
+      shell: date +%Y%m%d
+      register: date_string
+
+    - name: register apk names in "{{ apk_upload_path }}"
+      shell: ls "{{ apk_upload_path }}"
+      register: original_apk_name
+
+    - name: show original_apk_name
+      debug:
+        msg: "origin apk name: {{ original_apk_name.stdout_lines }}"
+
+    - name: generate recent channel code from original apk files
+      shell: ls "{{ apk_upload_path }}" | cut -d - -f 4 | cut -d . -f 1
+      register: channel_code
+
+    - name: show channel_code
+      debug:
+        msg: "channel code: {{ channel_code.stdout_lines }}"
+
+    - name: initial new_apk_name as a array
+      set_fact:
+        new_apk_name: "[]"
+
+    - name: check new_apk_name data type
+      debug:
+        msg: "{{ new_apk_name | type_debug }}"    
+
+    - name: Build a list of new apk file name
+      set_fact:
+        new_apk_name: "{{ apk_name_prefix }}_{{ item }}_{{ date_string.stdout }}.apk"
+      loop: "{{ channel_code.stdout_lines }}"
+      register: new_apk_name_list
+
+    - name: echo new_apk_name
+      debug:
+        var: "{{ new_apk_name }}"
+      with_items: "{{ new_apk_name_list }}" 
