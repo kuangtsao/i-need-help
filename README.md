@@ -4,7 +4,7 @@ for ask question
 ## 待解決問題
 
 ### 如何將組合好的字串，利用 set_fact 存成一個 List
-
+- 執行指令:ansible-playbook playbook/change_name.yml
 - input: [ suisei-v3.22.0.0-PRD-1q2w3e4r.apk, suisei-v3.22.0.0-PRD-1qaz2wsx.apk, suisei-v3.22.0.0-PRD-zaq12wsx.apk ]
 
 - output: [ sui_1q2w3e4r_20210122.apk,sui_1q2w3e4r_20210122.apk,sui_zaq12wsx_20210122.apk ]
