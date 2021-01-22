@@ -1,11 +1,9 @@
 # i-need-help
 for ask question
 
-## ansible_sudo_password 抓不到
-- `ansible_sudo_password` 在 2.9 已經被廢掉了，用 `ansible_become_password`
-- 儲存密碼的變數，比如 `a-password` 要改成 `a_password`，python 才讀得到
+## 待解決問題
 
-## 如何將組合好的字串，利用 set_fact 存成一個 List
+### 如何將組合好的字串，利用 set_fact 存成一個 List
 
 - input: [ suisei-v3.22.0.0-PRD-1q2w3e4r.apk, suisei-v3.22.0.0-PRD-1qaz2wsx.apk, suisei-v3.22.0.0-PRD-zaq12wsx.apk ]
 
@@ -31,3 +29,10 @@ ok: [localhost] => (item=changed) => {
 }
 
 ```
+
+
+## 已解決問題
+
+### ansible_sudo_password 抓不到
+- `ansible_sudo_password` 在 2.9 已經被廢掉了，用 `ansible_become_password`
+- 儲存密碼的變數，比如 `a-password` 要改成 `a_password`，python 才讀得到
