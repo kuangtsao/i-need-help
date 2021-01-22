@@ -6,6 +6,7 @@ for ask question
 ## 已解決問題
 
 ### ansible_sudo_password 抓不到
+(感謝 tg ansible taiwan 凍仁翔 Eric chang 指導)
 - `ansible_sudo_password` 在 2.9 已經被廢掉了，用 `ansible_become_password`
 - 儲存密碼的變數，比如 `a-password` 要改成 `a_password`，python 才讀得到
 
@@ -35,7 +36,7 @@ ok: [localhost] => (item=changed) => {
 }
 
 ```
-解法:(感謝 tg ansible taiwan Yan-ren Tsai 指導)
+解法:(感謝 tg ansible taiwan Yan-ren Tsai  Eric chang 指導)  
 (在 commit 4f5f935)  
 - set_fact 加附加的項目的方法
 ```
